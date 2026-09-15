@@ -1,0 +1,152 @@
+/* Header / brand / clock */
+
+.hud-header {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  height: 56px;
+  padding: 0 4px;
+  position: relative;
+}
+
+.hud-header::after {
+  content: '';
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  bottom: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 232, 255, 0.45) 20%,
+    rgba(232, 184, 74, 0.35) 50%,
+    rgba(0, 232, 255, 0.45) 80%,
+    transparent
+  );
+}
+
+.hud-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.hud-brand__title {
+  font-family: var(--iw-font-display);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--iw-cyan);
+  text-shadow: var(--iw-glow-text);
+  animation: iw-title-glow 3.2s ease-in-out infinite;
+}
+
+.hud-brand__title.is-glitch {
+  animation: iw-glitch 420ms steps(2, end);
+}
+
+.hud-brand__sub {
+  font-size: var(--iw-fs-caption);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--iw-text-secondary);
+}
+
+.hud-clock {
+  justify-self: center;
+  font-family: var(--iw-font-mono);
+  font-size: 16px;
+  color: var(--iw-text-secondary);
+  letter-spacing: 0.1em;
+  text-align: center;
+}
+
+.hud-clock__label {
+  display: block;
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  color: var(--iw-text-muted);
+  margin-bottom: 2px;
+  text-transform: uppercase;
+}
+
+.hud-status {
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.hud-status__item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--iw-fs-caption);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--iw-success);
+}
+
+.hud-status__item--warn {
+  color: var(--iw-warn);
+}
+
+.hud-status__item--gold {
+  color: var(--iw-gold);
+}
+
+.hud-status__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 8px currentColor;
+  animation: iw-pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes iw-title-glow {
+  0%,
+  100% {
+    text-shadow: 0 0 8px rgba(0, 232, 255, 0.55), 0 0 2px #00e8ff;
+  }
+  50% {
+    text-shadow:
+      0 0 16px rgba(0, 232, 255, 0.95),
+      0 0 28px rgba(0, 232, 255, 0.4),
+      0 0 2px #fff;
+  }
+}
+
+@keyframes iw-glitch {
+  0% {
+    transform: translate(0);
+    filter: none;
+  }
+  20% {
+    transform: translate(-2px, 1px);
+    color: #7c9cff;
+  }
+  40% {
+    transform: translate(2px, -1px);
+    text-shadow: -2px 0 #ff3d57, 2px 0 #00e8ff;
+  }
+  60% {
+    transform: translate(-1px, 0);
+  }
+  100% {
+    transform: translate(0);
+    color: var(--iw-cyan);
+  }
+}
+
+@keyframes iw-pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}

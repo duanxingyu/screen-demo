@@ -1,0 +1,63 @@
+@import '../tokens.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--iw-void);
+  color: var(--iw-text-primary);
+  font-family: var(--iw-font-body);
+}
+
+#app {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(ellipse 70% 55% at 50% 42%, rgba(0, 90, 130, 0.28) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 30% at 50% 70%, rgba(232, 184, 74, 0.04) 0%, transparent 50%),
+    linear-gradient(180deg, #01050a 0%, #03080f 45%, #061018 100%);
+}
+
+/* 1920×1080 design canvas */
+.stage {
+  position: relative;
+  width: var(--iw-design-w);
+  height: var(--iw-design-h);
+  transform-origin: center center;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.hud-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  grid-template-rows: 64px 1fr 44px;
+  gap: 10px;
+  padding: 16px 22px 12px;
+  pointer-events: none;
+}
+
+.hud-layer > * {
+  pointer-events: auto;
+}
+
+.hud-body {
+  display: grid;
+  grid-template-columns: var(--iw-side-w) 1fr var(--iw-side-w);
+  gap: var(--iw-gap);
+  min-height: 0;
+}

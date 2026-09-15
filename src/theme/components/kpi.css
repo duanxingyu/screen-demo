@@ -1,0 +1,104 @@
+/* KPI strip */
+
+.kpi-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.kpi-card {
+  min-height: 96px;
+}
+
+.kpi-card__label {
+  font-size: var(--iw-fs-label);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--iw-text-secondary);
+  margin-bottom: 6px;
+}
+
+.kpi-card__value-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.kpi-card__value {
+  font-family: var(--iw-font-display);
+  font-size: var(--iw-fs-kpi);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+  background: linear-gradient(90deg, #00e8ff 0%, #e8f7ff 45%, #00e8ff 55%, #3d9eff 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 6px rgba(0, 232, 255, 0.5));
+  animation: iw-kpi-shimmer 4s linear infinite;
+}
+
+.kpi-card__unit {
+  font-size: var(--iw-fs-caption);
+  color: var(--iw-text-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.kpi-card__delta {
+  margin-top: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 8px;
+  font-size: var(--iw-fs-caption);
+  font-family: var(--iw-font-mono);
+  border: 1px solid var(--iw-border-soft);
+  background: var(--iw-cyan-ghost);
+}
+
+.kpi-card__delta.up {
+  color: var(--iw-danger);
+  border-color: rgba(255, 61, 87, 0.4);
+}
+
+.kpi-card__delta.down {
+  color: var(--iw-success);
+  border-color: rgba(0, 214, 143, 0.4);
+}
+
+.kpi-card--warn .kpi-card__value {
+  background: linear-gradient(90deg, #ffc107 0%, #fff3cd 45%, #ffc107 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.kpi-card--ok .kpi-card__value {
+  background: linear-gradient(90deg, #00d68f 0%, #e8fff5 45%, #00d68f 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.kpi-card--gold .kpi-card__value {
+  background: linear-gradient(90deg, #e8b84a 0%, #fff4d4 45%, #e8b84a 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 6px rgba(232, 184, 74, 0.45));
+}
+
+@keyframes iw-kpi-shimmer {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}

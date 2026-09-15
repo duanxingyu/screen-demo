@@ -1,0 +1,25 @@
+/**
+ * Iron Workshop HUD — theme barrel
+ *
+ * Skill 抽取清单（整包复制本目录）：
+ *   tokens.css
+ *   echarts-theme.js
+ *   components/*.css
+ *   index.css
+ *   THEME.md
+ *
+ * 使用：
+ *   import './theme/index.css'
+ *   import { ironWorkshopTheme } from './theme/echarts-theme.js'
+ */
+
+@import './components/base.css';
+@import './components/header.css';
+@import './components/frame.css';
+@import './components/kpi.css';
+@import './components/panels.css';
+@import './components/holo-stage.css';
+@import './components/alerts.css';
+@import './components/effects.css';
+@import './components/fx-enhanced.css';
+@import './components/hologram-material.css';

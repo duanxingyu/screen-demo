@@ -1,0 +1,200 @@
+/* Side diagnostic panels: systems / progress / lists */
+
+.side-col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 0;
+}
+
+.side-col > .hud-frame {
+  flex: 1;
+  min-height: 0;
+}
+
+.side-col > .hud-frame--fixed {
+  flex: 0 0 auto;
+}
+
+.sys-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 4px;
+  overflow: hidden;
+}
+
+.sys-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+  align-items: center;
+  font-size: var(--iw-fs-caption);
+  font-family: var(--iw-font-mono);
+}
+
+.sys-row__name {
+  color: var(--iw-text-secondary);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sys-row__val {
+  color: var(--iw-cyan);
+  font-variant-numeric: tabular-nums;
+}
+
+.sys-row__val.ok {
+  color: var(--iw-success);
+}
+.sys-row__val.warn {
+  color: var(--iw-warn);
+}
+.sys-row__val.crit {
+  color: var(--iw-danger);
+}
+
+.progress-track {
+  grid-column: 1 / -1;
+  height: 3px;
+  background: rgba(0, 232, 255, 0.1);
+  border: 1px solid rgba(0, 232, 255, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-track__fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  background: linear-gradient(90deg, rgba(0, 232, 255, 0.3), var(--iw-cyan));
+  box-shadow: 0 0 8px rgba(0, 232, 255, 0.5);
+  transition: width 0.6s ease-out;
+}
+
+.progress-track__fill.warn {
+  background: linear-gradient(90deg, rgba(255, 193, 7, 0.25), var(--iw-warn));
+  box-shadow: 0 0 8px rgba(255, 193, 7, 0.45);
+}
+
+.progress-track__fill.crit {
+  background: linear-gradient(90deg, rgba(255, 61, 87, 0.25), var(--iw-danger));
+  box-shadow: 0 0 8px rgba(255, 61, 87, 0.45);
+}
+
+.progress-track__fill.gold {
+  background: linear-gradient(90deg, rgba(232, 184, 74, 0.25), var(--iw-gold));
+  box-shadow: 0 0 8px rgba(232, 184, 74, 0.45);
+}
+
+/* Targeting / reticle mini widgets */
+.reticle-board {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 6px;
+  flex: 1;
+  min-height: 0;
+}
+
+.reticle-cell {
+  position: relative;
+  border: 1px solid var(--iw-border-soft);
+  background: rgba(0, 40, 60, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 6px;
+  min-height: 88px;
+}
+
+.reticle-cell::before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border: 1px dashed rgba(0, 232, 255, 0.2);
+  pointer-events: none;
+}
+
+.reticle-ring {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid var(--iw-cyan-dim);
+  box-shadow: inset 0 0 12px rgba(0, 232, 255, 0.15), 0 0 10px rgba(0, 232, 255, 0.2);
+  position: relative;
+  animation: iw-orbit-spin 12s linear infinite;
+}
+
+.reticle-ring::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  margin-left: -2px;
+  border-radius: 50%;
+  background: var(--iw-cyan);
+  box-shadow: 0 0 8px var(--iw-cyan);
+}
+
+.reticle-cell__label {
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--iw-text-muted);
+  z-index: 1;
+}
+
+.reticle-cell__val {
+  font-family: var(--iw-font-display);
+  font-size: 14px;
+  color: var(--iw-cyan-hot);
+  z-index: 1;
+  text-shadow: var(--iw-glow-text);
+}
+
+/* Log feed */
+.diag-log {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  font-family: var(--iw-font-mono);
+  font-size: 10px;
+  line-height: 1.55;
+  color: var(--iw-text-secondary);
+  mask-image: linear-gradient(180deg, transparent, #000 12%, #000 88%, transparent);
+}
+
+.diag-log__line {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  opacity: 0.85;
+}
+
+.diag-log__line .ts {
+  color: var(--iw-text-muted);
+  margin-right: 6px;
+}
+
+.diag-log__line .tag {
+  color: var(--iw-cyan);
+  margin-right: 4px;
+}
+
+.diag-log__line.crit .tag {
+  color: var(--iw-danger);
+}
+.diag-log__line.warn .tag {
+  color: var(--iw-warn);
+}
+.diag-log__line.ok .tag {
+  color: var(--iw-success);
+}

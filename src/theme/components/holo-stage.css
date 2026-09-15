@@ -1,0 +1,321 @@
+/* Center holographic pedestal / workshop stage */
+
+.center-col {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  gap: 10px;
+}
+
+.holo-stage {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  perspective: 900px;
+  background:
+    radial-gradient(ellipse 55% 50% at 50% 48%, rgba(0, 160, 200, 0.12) 0%, transparent 70%),
+    rgba(2, 10, 18, 0.35);
+}
+
+.holo-stage .hud-frame__title {
+  left: 24px;
+  transform: none;
+}
+
+/* Pedestal floor */
+.holo-pedestal {
+  position: absolute;
+  left: 50%;
+  bottom: 8%;
+  width: 360px;
+  height: 28px;
+  margin-left: -180px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(0, 232, 255, 0.25) 0%, transparent 70%);
+  box-shadow:
+    0 0 40px rgba(0, 232, 255, 0.25),
+    inset 0 0 20px rgba(0, 232, 255, 0.2);
+  border: 1px solid rgba(0, 232, 255, 0.3);
+  z-index: 1;
+}
+
+.holo-pedestal::before {
+  content: '';
+  position: absolute;
+  left: 12%;
+  right: 12%;
+  top: -8px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--iw-cyan), transparent);
+  box-shadow: 0 0 12px var(--iw-cyan);
+}
+
+/* Arc reactor core */
+.holo-core {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  z-index: 3;
+}
+
+.holo-core__ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 232, 255, 0.35);
+  box-shadow: 0 0 24px rgba(0, 232, 255, 0.2), inset 0 0 24px rgba(0, 232, 255, 0.08);
+  animation: iw-orbit-spin 22s linear infinite;
+}
+
+.holo-core__ring--2 {
+  inset: 18px;
+  border-style: dashed;
+  border-color: rgba(0, 232, 255, 0.28);
+  animation-duration: 14s;
+  animation-direction: reverse;
+}
+
+.holo-core__ring--3 {
+  inset: 40px;
+  border-color: rgba(232, 184, 74, 0.35);
+  animation-duration: 18s;
+}
+
+.holo-core__ring--4 {
+  inset: 62px;
+  border-width: 2px;
+  border-color: rgba(0, 232, 255, 0.5);
+  box-shadow: 0 0 30px rgba(0, 232, 255, 0.35), inset 0 0 20px rgba(0, 232, 255, 0.2);
+  animation-duration: 8s;
+  animation-direction: reverse;
+}
+
+.holo-core__dot {
+  position: absolute;
+  top: -3px;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  margin-left: -3px;
+  border-radius: 50%;
+  background: var(--iw-cyan-hot);
+  box-shadow: 0 0 10px var(--iw-cyan), 0 0 20px rgba(0, 232, 255, 0.6);
+}
+
+.holo-core__heart {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 56px;
+  height: 56px;
+  margin: -28px 0 0 -28px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 40% 35%, #9af6ff 0%, #00e8ff 35%, #0a6a88 70%, #042030 100%);
+  box-shadow:
+    0 0 30px rgba(0, 232, 255, 0.8),
+    0 0 60px rgba(0, 232, 255, 0.35),
+    inset 0 0 12px rgba(255, 255, 255, 0.4);
+  animation: iw-reactor-pulse 2.4s ease-in-out infinite;
+}
+
+.holo-core__heart::after {
+  content: '';
+  position: absolute;
+  inset: 10px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.holo-core__label {
+  position: absolute;
+  left: 50%;
+  top: calc(100% + 14px);
+  transform: translateX(-50%);
+  font-family: var(--iw-font-display);
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  color: var(--iw-cyan);
+  text-shadow: var(--iw-glow-text);
+  white-space: nowrap;
+}
+
+/* Wireframe blueprint silhouette (generic mech — no IP) */
+.holo-blueprint {
+  position: absolute;
+  left: 50%;
+  top: 42%;
+  transform: translate(-50%, -50%);
+  width: 280px;
+  height: 340px;
+  z-index: 2;
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.holo-blueprint svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 8px rgba(0, 232, 255, 0.4));
+  animation: iw-blueprint-float 6s ease-in-out infinite;
+}
+
+.holo-blueprint .stroke {
+  fill: none;
+  stroke: var(--iw-cyan);
+  stroke-width: 1.2;
+  opacity: 0.7;
+}
+
+.holo-blueprint .stroke-dim {
+  fill: none;
+  stroke: rgba(0, 232, 255, 0.35);
+  stroke-width: 0.8;
+}
+
+.holo-blueprint .fill-ghost {
+  fill: rgba(0, 232, 255, 0.06);
+  stroke: none;
+}
+
+.holo-blueprint .gold {
+  stroke: var(--iw-gold);
+  fill: none;
+  stroke-width: 1;
+  opacity: 0.6;
+}
+
+/* Floating callout chips around hologram */
+.holo-chip {
+  position: absolute;
+  z-index: 4;
+  padding: 6px 10px;
+  font-family: var(--iw-font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--iw-text-primary);
+  background: rgba(4, 22, 40, 0.75);
+  border: 1px solid var(--iw-border-soft);
+  box-shadow: var(--iw-glow-sm);
+  white-space: nowrap;
+  animation: iw-chip-bob 5s ease-in-out infinite;
+}
+
+.holo-chip::before {
+  content: '';
+  position: absolute;
+  width: 40px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--iw-cyan), transparent);
+  top: 50%;
+}
+
+.holo-chip--l {
+  left: 8%;
+  top: 28%;
+}
+.holo-chip--l::before {
+  right: -42px;
+}
+
+.holo-chip--l2 {
+  left: 6%;
+  top: 58%;
+  animation-delay: -1.5s;
+}
+.holo-chip--l2::before {
+  right: -42px;
+}
+
+.holo-chip--r {
+  right: 8%;
+  top: 32%;
+  animation-delay: -0.8s;
+}
+.holo-chip--r::before {
+  left: -42px;
+  background: linear-gradient(270deg, var(--iw-cyan), transparent);
+}
+
+.holo-chip--r2 {
+  right: 6%;
+  top: 62%;
+  animation-delay: -2.2s;
+}
+.holo-chip--r2::before {
+  left: -42px;
+  background: linear-gradient(270deg, var(--iw-gold), transparent);
+  border-color: var(--iw-border-gold);
+}
+
+.holo-chip strong {
+  color: var(--iw-cyan-hot);
+  margin-left: 6px;
+}
+
+.holo-chip--gold strong {
+  color: var(--iw-gold);
+}
+
+/* Mini chart strip under holo — 2×3 mosaic */
+.holo-footer-charts {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 8px;
+  flex: 0 0 268px;
+  min-height: 0;
+}
+
+.holo-footer-charts .hud-frame {
+  min-height: 0;
+  padding: 14px 10px 8px;
+}
+
+.holo-footer-charts .chart-el {
+  min-height: 96px;
+}
+
+@keyframes iw-reactor-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+  50% {
+    transform: scale(1.06);
+    filter: brightness(1.15);
+  }
+}
+
+@keyframes iw-blueprint-float {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(-8px);
+    opacity: 0.7;
+  }
+}
+
+@keyframes iw-chip-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes iw-orbit-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

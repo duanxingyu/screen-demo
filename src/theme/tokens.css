@@ -1,0 +1,92 @@
+/**
+ * Iron Workshop HUD — Design Tokens
+ * 电影工作室全息投影风（FUI）。无商标素材。
+ * Skill 抽取：整包复制 src/theme/ 即可。
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Exo+2:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  /* ——— Surfaces ——— */
+  --iw-void: #02060c;
+  --iw-workshop: #050b14;
+  --iw-panel: rgba(3, 18, 34, 0.42);
+  --iw-panel-solid: #061422;
+  --iw-panel-elevated: rgba(4, 24, 42, 0.55);
+  --iw-glass: rgba(0, 210, 240, 0.07);
+  --iw-holo-fresnel: rgba(154, 246, 255, 0.22);
+
+  /* ——— Arc-reactor cyan (primary) ——— */
+  --iw-cyan: #00e8ff;
+  --iw-cyan-hot: #9af6ff;
+  --iw-cyan-dim: rgba(0, 232, 255, 0.42);
+  --iw-cyan-ghost: rgba(0, 232, 255, 0.1);
+  --iw-blue: #3d9eff;
+  --iw-blue-deep: #1470ff;
+
+  /* ——— Suit gold (secondary accent, sparingly) ——— */
+  --iw-gold: #e8b84a;
+  --iw-gold-dim: rgba(232, 184, 74, 0.35);
+  --iw-gold-ghost: rgba(232, 184, 74, 0.08);
+
+  /* ——— Semantic ——— */
+  --iw-success: #00d68f;
+  --iw-warn: #ffc107;
+  --iw-danger: #ff3d57;
+  --iw-info: #7c9cff;
+
+  /* ——— Text ——— */
+  --iw-text-primary: #e8f7ff;
+  --iw-text-secondary: #8fb6c9;
+  --iw-text-muted: #5a7a8c;
+  --iw-text-inverse: #031018;
+
+  /* ——— Axis / borders ——— */
+  --iw-axis: #24506b;
+  --iw-split: rgba(0, 232, 255, 0.1);
+  --iw-border: rgba(0, 232, 255, 0.48);
+  --iw-border-soft: rgba(0, 232, 255, 0.22);
+  --iw-border-gold: rgba(232, 184, 74, 0.4);
+
+  /* ——— Typography ——— */
+  --iw-font-display: "Orbitron", "Exo 2", system-ui, sans-serif;
+  --iw-font-ui: "Exo 2", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+  --iw-font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --iw-font-body: "Exo 2", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+
+  --iw-fs-hero: clamp(36px, 3vw, 56px);
+  --iw-fs-kpi: clamp(26px, 2vw, 42px);
+  --iw-fs-title: clamp(13px, 0.85vw, 16px);
+  --iw-fs-label: clamp(11px, 0.7vw, 13px);
+  --iw-fs-caption: clamp(10px, 0.55vw, 12px);
+  --iw-tracking-title: 0.18em;
+  --iw-tracking-wide: 0.28em;
+
+  /* ——— Stroke & glow ——— */
+  --iw-stroke: 1px;
+  --iw-stroke-strong: 1.5px;
+  --iw-radius: 2px;
+  --iw-glow-sm: 0 0 8px rgba(0, 232, 255, 0.4);
+  --iw-glow-md: 0 0 14px rgba(0, 232, 255, 0.35), 0 0 32px rgba(0, 232, 255, 0.12);
+  --iw-glow-lg: 0 0 24px rgba(0, 232, 255, 0.45), 0 0 60px rgba(0, 232, 255, 0.18);
+  --iw-glow-text: 0 0 10px rgba(0, 232, 255, 0.55);
+  --iw-glow-gold: 0 0 12px rgba(232, 184, 74, 0.45);
+  --iw-inset: inset 0 0 28px rgba(0, 232, 255, 0.05);
+
+  /* ——— Layout (design canvas) ——— */
+  --iw-design-w: 1920px;
+  --iw-design-h: 1080px;
+  --iw-side-w: 420px;
+  --iw-gap: 14px;
+  --iw-pad: 20px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

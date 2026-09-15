@@ -1,0 +1,105 @@
+/* Alert strip */
+
+.hud-alert-strip {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 12px;
+  background: rgba(255, 61, 87, 0.1);
+  border: 1px solid rgba(255, 61, 87, 0.32);
+  overflow: hidden;
+  position: relative;
+}
+
+.hud-alert-strip::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--iw-danger);
+  box-shadow: 0 0 8px var(--iw-danger);
+}
+
+.alert-badge {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--iw-font-display);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--iw-danger);
+  padding-left: 6px;
+}
+
+.alert-badge__pulse {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--iw-danger);
+  box-shadow: 0 0 8px var(--iw-danger);
+  animation: iw-pulse-dot 1.2s ease-in-out infinite;
+}
+
+.alert-marquee {
+  flex: 1;
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+}
+
+.alert-marquee__track {
+  display: inline-flex;
+  gap: 48px;
+  white-space: nowrap;
+  animation: iw-marquee 32s linear infinite;
+  font-size: var(--iw-fs-label);
+  color: var(--iw-text-primary);
+  font-family: var(--iw-font-mono);
+}
+
+.hud-alert-strip:hover .alert-marquee__track {
+  animation-play-state: paused;
+}
+
+@keyframes iw-marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.alert-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.alert-item__lvl {
+  padding: 1px 6px;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: 1px solid;
+}
+
+.alert-item__lvl.critical {
+  color: var(--iw-danger);
+  border-color: var(--iw-danger);
+  background: rgba(255, 61, 87, 0.15);
+}
+.alert-item__lvl.warn {
+  color: var(--iw-warn);
+  border-color: var(--iw-warn);
+  background: rgba(255, 193, 7, 0.12);
+}
+.alert-item__lvl.info {
+  color: var(--iw-blue);
+  border-color: var(--iw-blue);
+  background: rgba(61, 158, 255, 0.12);
+}
